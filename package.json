@@ -1,0 +1,16 @@
+{
+  "name": "nightwatch_cucumber_tests",
+  "version": "1.0.0",
+  "description": "test framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "stu",
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber": "^3.0.1",
+    "nightwatch": "^0.9.16",
+    "nightwatch-cucumber": "^8.0.10"
+  }
+}
