@@ -13,7 +13,7 @@ defineSupportCode(({ Given, Then, When }) => {
 
     When('I click on the More button', function () {
         const bbc_sports = client.page.bbc_sports();
-        
+
         return bbc_sports.click('@more_button');
     });
 
@@ -26,20 +26,24 @@ defineSupportCode(({ Given, Then, When }) => {
 
     Then('I will see {int} sports', function (int) {
         const bbc_sports = client.page.bbc_sports();
-        
         return bbc_sports.verify.countOfItemsOnList('css selector', '.gs-o-list-ui', 'button', 13);
     });
 
     Then('I will see these sports', function (dataTable) {
         const data_list = dataTable.raw();
-        console.log(" the datatable item 1 looks like this " + JSON.stringify(data_list));
         const bbc_sports = client.page.bbc_sports();
         return bbc_sports
             .verify.textContentOfItemsOnList('css selector', '.gs-o-list-ui', 'button', data_list);
     });
 
+    Then('the {string} is displayed', function (string) {
+        const bbc_sports = client.page.bbc_sports();
+        return bbc_sports
+            .expect.element('button.sp-c-filter-nav__link.sp-c-filter-nav__link--selected').text.to.equal(string);
 
-    
+    });
+
+
 
 });
 

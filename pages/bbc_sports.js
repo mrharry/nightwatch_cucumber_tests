@@ -8,7 +8,6 @@ const pageCommands = {
             els.value.forEach(function(element) {
                 self.elementIdText(element.ELEMENT, function (result) {
                     if (result.value == item) {
-                        console.log("text is " + result.value + " item is " + item)
                         self.elementIdClick(result.ELEMENT);
                     }
                 });

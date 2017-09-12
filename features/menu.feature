@@ -16,4 +16,4 @@ Feature:
       Given I have opened the Sports page
       And I click on the More button
       When I select the "Championship"
-      Then the Championship is displayed
+      Then the "Championship" is displayed
