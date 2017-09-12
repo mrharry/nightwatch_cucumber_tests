@@ -20,7 +20,7 @@ var util = require('util');
 exports.assertion = function(selector, element, attribute, expected, msg) {
 
     const element_with_attribute  = element + ' ' + attribute;
-    
+
     const DEFAULT_MSG = 'Testing the element <%s> with the attribute "%s" contains these items "%s".';
 
     this.message = msg || util.format(DEFAULT_MSG, element, attribute, expected);
@@ -40,13 +40,14 @@ exports.assertion = function(selector, element, attribute, expected, msg) {
 
     this.command = function(callback) {
         const self = this.api;
-        
+
         this.api.elements('css selector', element_with_attribute, function(el) {
             el.value.forEach(function(element) {
                 self.elementIdText(element.ELEMENT, callback, function (result) {
                     console.log("result is " + result.value)
-                    return "blah"
+
                 });
+                return this
             });
         })
 
