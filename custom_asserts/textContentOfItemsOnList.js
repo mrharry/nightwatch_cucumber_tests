@@ -27,38 +27,38 @@ exports.assertion = function(selector, element, attribute, expected, msg) {
     this.message = msg || util.format(DEFAULT_MSG, element, attribute, expected);
 
     this.expected = function() {
-        
+
         return expected;
     };
 
     this.pass = function(value) {
+        console.log("inside pass  " + JSON.stringify(value))
 
-        self = this.api;
-        text_found = foundText(value)
-        console.log("back from new function res is " + text_found)
-        
-        function foundText(value) {
-            value.value.forEach(function (element) {
-                return self.elementIdText(element.ELEMENT, function (res) {
-                    found.push(res.value)
-                    console.log("inside text loop  " + JSON.stringify(found))
-                    return found
-                });
-                return
-            });
-            return "blah"
-        }
-        
-        
     };
 
     this.value = function(result) {
- 
+        console.log("inside result  " + JSON.stringify(result));
         return result
     };
 
     this.command = function(callback) {
-        return this.api.elements(selector, element_with_attribute, callback);
-    };
 
+        self = this.api;
+        this.api.elements(selector, element_with_attribute, function(res) {
+            let items_processed = 0;
+            res.value.forEach(function(el) {
+                self.elementIdText(el.ELEMENT, function (res_text) {
+                    found.push(res_text.value);
+                    items_processed++;
+                    if(items_processed === res.value.length) {
+                        callback(found);
+                    }
+                });
+
+            });
+
+        });
+    };
 };
+
+
