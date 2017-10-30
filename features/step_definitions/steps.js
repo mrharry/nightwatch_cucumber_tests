@@ -5,6 +5,7 @@ defineSupportCode(({ Given, Then, When }) => {
 
     Given('I have opened the Sports page', function () {
         const bbc_sports = client.page.bbc_sports();
+        console.log(" here's the boss " + client.globals.users.admin_guy)
         return bbc_sports
             .navigate()
             .waitForElementVisible('@body', 1000)
