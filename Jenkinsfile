@@ -8,8 +8,7 @@ pipeline {
     }
     stage('next') {
       steps {
-        sh '''npm install
-'''
+        echo 'next hello'
       }
     }
   }
