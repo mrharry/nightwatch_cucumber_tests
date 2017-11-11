@@ -11,5 +11,10 @@ pipeline {
         echo 'next hello'
       }
     }
+    stage('') {
+      steps {
+        cucumber 'cucumber.json'
+      }
+    }
   }
 }
