@@ -16,5 +16,10 @@ pipeline {
         cucumber 'cucumber*'
       }
     }
+    stage('End') {
+      steps {
+        echo 'end of the pipeline'
+      }
+    }
   }
 }
