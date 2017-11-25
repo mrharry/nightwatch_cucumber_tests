@@ -7,8 +7,17 @@ pipeline {
       }
     }
     stage('next') {
-      steps {
-        echo 'next hello'
+      parallel {
+        stage('next') {
+          steps {
+            echo 'next hello'
+          }
+        }
+        stage('E2E-TEST') {
+          steps {
+            sh 'npm -v'
+          }
+        }
       }
     }
     stage('error') {
