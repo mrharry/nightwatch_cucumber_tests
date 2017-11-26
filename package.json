@@ -1,7 +1,7 @@
 {
   "name": "nightwatch_cucumber_tests",
   "version": "1.0.0",
-  "description": "test framework",
+  "description": "test framework for nightwatch",
   "main": "index.js",
   "scripts": {
     "e2e-test": "nightwatch"
