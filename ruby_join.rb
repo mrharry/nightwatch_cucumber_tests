@@ -34,7 +34,7 @@ test_feature_contents = test_features.map { |f| CSV.read(f) }
 test_case_contents = test_case.map { |f| CSV.read(f) }
 test_run_instance = test_run.map { |f| CSV.read(f) }
 
-
+mkdir
 csv_string = CSV.generate do |csv|
   csv << csv_headers
   requirements_contents.each do |file|
