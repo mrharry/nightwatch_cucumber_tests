@@ -8,7 +8,7 @@ var options = {
     jsonFile: 'reports/cucumber.json',
     output: 'reports/cucumber.html',
     reportSuiteAsScenarios: true,
-    launchReport: true,
+    launchReport: false,
     metadata: {
         "App Version":"0.3.2",
         "Test Environment": "STAGING",
