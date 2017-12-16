@@ -2,7 +2,7 @@
 require('nightwatch-cucumber')({
     cucumberArgs: [
         '--require', 'features/step_definitions',
-        '--format', 'json:reports/cucumber.json',
+        '--format', 'json:cucumberReport/cucumber.json',
         'features'
     ]
 });
