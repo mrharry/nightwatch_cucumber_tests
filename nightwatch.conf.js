@@ -9,7 +9,6 @@ require('nightwatch-cucumber')({
 
 module.exports = {
     custom_assertions_path: 'custom_asserts',
-    custom_commands_path: 'custom_commands',
     globals_path: 'globals.js',
     output_folder: 'reports',
     page_objects_path: 'pages',
