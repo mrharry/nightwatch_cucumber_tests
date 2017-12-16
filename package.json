@@ -4,12 +4,14 @@
   "description": "test framework for nightwatch",
   "main": "index.js",
   "scripts": {
-    "e2e-test": "nightwatch"
+    "e2e-test": "nightwatch",
+    "e2e-report": "node create-html-report.js"
   },
   "author": "stu",
   "license": "ISC",
   "devDependencies": {
     "cucumber": "^3.0.1",
+    "cucumber-html-reporter": "^3.0.4",
     "nightwatch": "^0.9.16",
     "nightwatch-cucumber": "^8.0.10"
   }
