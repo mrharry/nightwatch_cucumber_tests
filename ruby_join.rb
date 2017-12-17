@@ -34,14 +34,12 @@ test_feature_contents = test_features.map { |f| CSV.read(f) }
 test_case_contents = test_case.map { |f| CSV.read(f) }
 test_run_instance = test_run.map { |f| CSV.read(f) }
 
-mkdir
 csv_string = CSV.generate do |csv|
   csv << csv_headers
   requirements_contents.each do |file|
     file.shift                  # remove the headers of each file
     file.each do |row|
       test_feature_contents.each do |feature|
- #       feature.shift
         puts "new req is " + row[0] + "feature contents size is " + feature.inspect
         no_test_feature = true
         feature.each do |feature_row|
@@ -50,17 +48,14 @@ csv_string = CSV.generate do |csv|
           if feature_related_to === row[0]     # match the feature related to with req id
             puts "match in feature " + row[0]
             add_test_feature(row, feature_row)
-
             no_test_feature = false
             test_case_contents.each do |cases|
-#              cases.shift
               no_test_case = true
               cases.each do |case_row|
                 if case_row[4] === feature_row[0]       # match the case related to with feature id
                   add_test_case(row, case_row)
                   no_test_case = false
                   test_run_instance.each do |test_instance|
-#                    test_instance.shift
                     no_test_run = true
                     test_instance.each do |test_run_row|      # may be 0 to many test runs
                       if test_run_row[5] ===  case_row[0]     # match the test run related to with case id
