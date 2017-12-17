@@ -18,10 +18,16 @@ defineSupportCode(({ Given, Then, When }) => {
         return bbc_sports.click('@more_button');
     });
 
-    When('I select the {string}', function (string) {
+    Then('I will see the More button', function () {
         const bbc_sports = client.page.bbc_sports();
         return bbc_sports
-            .select_item('css selector', '.gs-o-list-ui button', string)
+            .expect.element('@more_button').to.be.present;
+    });
+
+    When('I click on the More button', function () {
+        const bbc_sports = client.page.bbc_sports();
+
+        return bbc_sports.click('@more_button');
     });
 
 
