@@ -29,8 +29,8 @@ node {
                 sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}'
                 sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}/unitTestReport/'
                 sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}/traceability/'
-                sh 'mv -r cucumberReport releaseRecords/build_number_${BUILD_ID}'
-                sh 'mv -r manualTests releaseRecords/build_number_${BUILD_ID}'
+                sh 'mv cucumberReport releaseRecords/build_number_${BUILD_ID}'
+                sh 'mv manualTests releaseRecords/build_number_${BUILD_ID}'
                 sh 'mv traceability.csv releaseRecords/build_number_${BUILD_ID}/traceability'
                 sh 'zip -r releaseRecords releaseRecords'
            }
