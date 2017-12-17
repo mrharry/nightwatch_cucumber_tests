@@ -17,7 +17,9 @@ node {
                     exit = 0
                 }
             }
-
+            stage('runTraceability') {
+                sh 'ruby ruby_join.rb'
+            }
             stage('runReports') {
                 sh 'npm run "e2e-report"'
                 cucumber fileIncludePattern: 'cucumberReport/cucumber.json', sortingMethod: 'ALPHABETICAL'
@@ -33,9 +35,6 @@ node {
            }
             stage('archive') {
                 archiveArtifacts 'releaseRecords.zip'
-            }
-            stage('runTraceability') {
-                sh 'ruby ruby_join.rb'
             }
         }
     } catch (e) {
