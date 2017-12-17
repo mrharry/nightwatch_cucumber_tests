@@ -26,7 +26,6 @@ node {
             }
            stage('release docs') {
                 sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}'
-                sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}'
                 sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}/unitTestReport/'
                 sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}/traceability/'
                 sh 'mv cucumberReport releaseRecords/build_number_${BUILD_ID}'
