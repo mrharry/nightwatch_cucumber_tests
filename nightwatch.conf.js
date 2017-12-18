@@ -30,6 +30,9 @@ module.exports = {
             launch_url: 'http://localhost:3000',
             selenium_port: 4444,
             selenium_host: 'localhost',
+            screenshots: {
+                enabled: true,
+                path: "test/screenshots/selenium",
             desiredCapabilities: {
             }
         },
