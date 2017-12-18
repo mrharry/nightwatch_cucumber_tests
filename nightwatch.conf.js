@@ -32,7 +32,7 @@ module.exports = {
             selenium_host: 'localhost',
             screenshots: {
                 enabled: true,
-                path: "test/screenshots/selenium",
+                path: "test/screenshots/selenium"},
             desiredCapabilities: {
             }
         },
