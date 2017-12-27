@@ -12,12 +12,6 @@ defineSupportCode(({ Given, Then, When }) => {
             .expect.element('@more_button').to.be.present;
     });
 
-    When('I click on the More button', function () {
-        const bbc_sports = client.page.bbc_sports();
-
-        return bbc_sports.click('@more_button');
-    });
-
     Then('I will see the More button', function () {
         const bbc_sports = client.page.bbc_sports();
         return bbc_sports
