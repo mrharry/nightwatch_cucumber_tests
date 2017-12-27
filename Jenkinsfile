@@ -1,5 +1,8 @@
 node {
     try {
+    sh 'env > env.txt'
+        readFile('env.txt').split("\r?\n").each {
+            println it
         withEnv(["PATH+NODE=${tool name: 'JenkinsNode'}/bin"]) {
             stage('cleardown') {
                 deleteDir()
@@ -18,7 +21,7 @@ node {
                 }
             }
             stage('runTraceability') {
-                sh 'ruby ruby_join.rb'
+                sh 'ruby redmine_the_ruby_way.rb '
             }
             stage('runReports') {
                 sh 'npm run "e2e-report"'
