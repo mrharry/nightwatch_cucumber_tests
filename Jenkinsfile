@@ -22,7 +22,7 @@ node {
                 }
             }
             stage('runTraceability') {
-                sh 'ruby redmine_the_ruby_way.rb '
+                sh 'ruby redmine_the_ruby_way.rb env.redmine env.USER env.stuart1'
             }
             stage('runReports') {
                 sh 'npm run "e2e-report"'
