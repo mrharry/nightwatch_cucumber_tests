@@ -24,9 +24,20 @@ module.exports = {
 
     url: 'http://www.bbc.co.uk/sport/',
 
+    sections: {
+        filter: {
+            selector: '.sp-c-filter-nav',
+            elements: {
+                more_button: '.sp-c-filter-nav__button.sp-c-filter-nav__link',
+                menu: 'ul[role=menu]',
+                dropdown: '[data-istats-container="competitionfilter-dropdown"]'
+            }
+        }
+    },
+// main page
+
     elements: {
         body: 'body',
-        more_button: '.sp-c-filter-nav > div > button',
-        menu: '.sp-c-filter-nav > ul[role=menu]'
+        primary_nav: '[data-istats-container="primary-nav"]'
     }
 };

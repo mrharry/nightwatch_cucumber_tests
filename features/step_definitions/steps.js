@@ -5,29 +5,27 @@ defineSupportCode(({ Given, Then, When }) => {
 
     Given('I have opened the Sports page', function () {
         const bbc_sports = client.page.bbc_sports();
-        console.log(" here's the boss " + client.globals.users.admin_guy)
+        console.log(" here's the boss " + client.globals.users.admin_guy);
         return bbc_sports
             .navigate()
             .waitForElementVisible('@body', 1000)
-            .expect.element('@more_button').to.be.present;
     });
 
     Then('I will see the More button', function () {
         const bbc_sports = client.page.bbc_sports();
-        return bbc_sports
-            .expect.element('@more_button').to.be.present;
+        const filterSection = bbc_sports.section.filter;
+        return filterSection.expect.element('@more_button').to.be.present;
     });
 
     When('I click on the More button', function () {
         const bbc_sports = client.page.bbc_sports();
-
-        return bbc_sports.click('@more_button');
+        const filterSection = bbc_sports.section.filter;
+        return filterSection.click('@more_button');
     });
-
-
+    
     Then('I will see {int} sports', function (int) {
         const bbc_sports = client.page.bbc_sports();
-        return bbc_sports.verify.countOfItemsOnList('css selector', '.gs-o-list-ui', 'button', 13);
+        return bbc_sports.verify.countOfItemsOnList('css selector', '.gs-o-list-ui', 'button', 18);
     });
 
     Then('I will see these sports', function (dataTable) {
