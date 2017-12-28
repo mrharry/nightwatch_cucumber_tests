@@ -13,6 +13,8 @@ class Issue < ActiveResource::Base
   self.password = ARGV[2]
   self.format = :xml
 
+  puts "passed argument " + self_site
+
   # Or you can use the Redmine-API key
   # self.headers['X-Redmine-API-Key'] = ARGV[1]
 end
