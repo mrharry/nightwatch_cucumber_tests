@@ -23,7 +23,7 @@ node {
             }
             stage('runTraceability') {
                 sh """#!/bin/bash -l
-                   rvm use 2.2.3
+                   rvm use ruby-2.2.3
                    ruby redmine_the_ruby_way.rb env.redmine env.USER env.stuart1
                 """
             }
