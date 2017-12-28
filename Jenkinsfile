@@ -1,8 +1,8 @@
 node {
     try {
-        sh 'env > env.txt'
-        readFile('env.txt').split("\r?\n").each {
-            println it
+//          sh 'env > env.txt'
+//          readFile('env.txt').split("\r?\n").each {
+//          println it
             }
         withEnv(["PATH+NODE=${tool name: 'JenkinsNode'}/bin"]) {
             stage('cleardown') {
@@ -22,7 +22,10 @@ node {
                 }
             }
             stage('runTraceability') {
-                sh 'ruby redmine_the_ruby_way.rb env.redmine env.USER env.stuart1'
+                sh """#!/bin/bash -l
+                   rvm use 2.2.3
+                   ruby redmine_the_ruby_way.rb env.redmine env.USER env.stuart1
+                """
             }
             stage('runReports') {
                 sh 'npm run "e2e-report"'
