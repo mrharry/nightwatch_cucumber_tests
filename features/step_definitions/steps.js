@@ -11,6 +11,18 @@ defineSupportCode(({ Given, Then, When }) => {
             .waitForElementVisible('@body', 1000)
     });
 
+    Given('I have opened the Weather page', function () {
+        const bbc_weather = client.page.bbc_weather();
+        return bbc_weather
+            .navigate()
+            .waitForElementVisible('@body', 1000)
+    });
+
+    Then('I will see the Weather Forecast', function () {
+        const bbc_weather = client.page.bbc_weather();
+        return bbc_weather.expect.element('@weather_forecast').to.be.present;
+    });
+
     Then('I will see the More button', function () {
         const bbc_sports = client.page.bbc_sports();
         const filterSection = bbc_sports.section.filter;

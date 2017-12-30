@@ -31,7 +31,7 @@ module.exports = {
             selenium_port: 4444,
             selenium_host: 'localhost',
             screenshots: {
-                enabled: true,
+                enabled: false,
                 path: "test/screenshots/selenium",
                 on_failure: true,
                 on_error: true},
