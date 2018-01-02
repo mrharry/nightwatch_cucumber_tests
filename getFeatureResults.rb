@@ -1,4 +1,17 @@
 require 'json'
+require 'uri'
+
+def extractTicketNo(feature)
+
+  uri = URI.extract(feature)
+
+  raise "an error has occurred" if uri.length > 1
+
+  uriElements = uri.first.split('/')
+
+  uriElements.last.to_s.gsub(/["']/, '')
+
+end
 
 cucumberReport = File.read('cucumberReport/cucumber.json')
 features = []
@@ -8,6 +21,8 @@ File.open("cucumberResults.json","w") do |result|
      passed = 0
      failed = 0
      notRun = 0
+
+     ticketNo = extractTicketNo(feature["description"])
 
     feature['elements'].each do |element|
       element["steps"].each do |step|
@@ -23,7 +38,7 @@ File.open("cucumberResults.json","w") do |result|
 
       end
     end
-    features << {:feature => feature["description"], :results => {:passed => passed, :failed => failed, :notRun => notRun}}
+    features << {:feature => ticketNo, :results => {:passed => passed, :failed => failed, :notRun => notRun}}
   end
   result.write((JSON.pretty_generate(features)))
 end
