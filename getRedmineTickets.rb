@@ -83,7 +83,7 @@ test_runs_manual = JSON.parse(retrieve_an_issue(2,13).to_json).sort_by! { |hash|
 
 defects = JSON.parse(retrieve_an_issue(2,13).to_json).sort_by! { |hash| hash['id'].to_i }
 
-test_runs_auto = File.read("featureResults.json")
+test_runs_auto = File.read("cucumberResults.json")
 test_runs_auto_hash = JSON.parse(test_runs_auto)
 
 anomalies = File.read("anomalies.json")
