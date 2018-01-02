@@ -1,6 +1,6 @@
 require 'json'
 
-cucumberReport = File.read('/Users/stuart1/nightwatch_cucumber_tests/cucumberReport/cucumber.json')
+cucumberReport = File.read('/cucumberReport/cucumber.json')
 features = []
 
 File.open("cucumberResults.json","w") do |result|
