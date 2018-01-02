@@ -25,7 +25,8 @@ node {
                 sh """#!/bin/bash -l
                    rvm use ruby-2.2.3
                    ruby -v
-                   ruby redmine_the_ruby_way.rb ${REDMINE} ${USER} ${PASSWORD}
+                   ruby getFeatureResults.rb
+                   ruby getRedmineTickets.rb ${REDMINE} ${USER} ${PASSWORD} ${BUILD_ID}
                 """
             }
             stage('runReports') {
