@@ -52,10 +52,10 @@ node {
         result = "FAIL" // make sure other exceptions are recorded as failure too
     }
 
-    def checkout () {
-       stage 'checkout'
-         deleteDir()
-         checkout scm
-    }
+}
 
+def checkout () {
+   stage 'checkout'
+     deleteDir()
+     checkout scm
 }
