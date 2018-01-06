@@ -24,7 +24,6 @@ node {
             stage('runTraceability') {
                 sh """#!/bin/bash -l
                    rvm use ruby-2.2.3
-                   ruby -v
                    ruby getFeatureResults.rb
                    ruby getRedmineTickets.rb ${REDMINE} ${USER} ${PASSWORD} ${BUILD_ID}
                 """
