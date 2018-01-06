@@ -5,12 +5,14 @@ node {
           println it
             }
         withEnv(["PATH+NODE=${tool name: 'JenkinsNode'}/bin"]) {
+        if release == "deploy"
             stage('cleardown') {
                 deleteDir()
             }
             stage('checkout') {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '933f-03c7e1f9d319', url: 'https://github.com/mrharry/nightwatch_cucumber_tests.git']]])
             }
+        end
             stage('npmInstall') {
                 sh 'node -v && npm -v && npm install'
             }
