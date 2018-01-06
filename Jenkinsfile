@@ -5,7 +5,7 @@ node {
           println it
             }
         withEnv(["PATH+NODE=${tool name: 'JenkinsNode'}/bin"]) {
-        if (release == "deploy")
+        if (release == deploy)
             stage('cleardown') {
                 deleteDir()
             }
@@ -17,7 +17,7 @@ node {
                 sh 'node -v && npm -v && npm install'
             }
         end
-        if (release == "deploy" || "test")
+        if (release == deploy || test)
             stage('runTests') {
                 try {
                     sh 'npm run "e2e-test"'
@@ -26,7 +26,7 @@ node {
                 }
             }
         end
-        if (release == "deploy")
+        if (release == deploy)
             stage('runTraceability') {
                 sh """#!/bin/bash -l
                    rvm use ruby-2.2.3
