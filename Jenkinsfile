@@ -12,10 +12,12 @@ node {
             stage('checkout') {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '933f-03c7e1f9d319', url: 'https://github.com/mrharry/nightwatch_cucumber_tests.git']]])
             }
-        end
+
             stage('npmInstall') {
                 sh 'node -v && npm -v && npm install'
             }
+        end
+        if (release == "deploy" || "test")
             stage('runTests') {
                 try {
                     sh 'npm run "e2e-test"'
@@ -23,6 +25,8 @@ node {
                     exit = 0
                 }
             }
+        end
+        if (release == "deploy")
             stage('runTraceability') {
                 sh """#!/bin/bash -l
                    rvm use ruby-2.2.3
@@ -46,6 +50,7 @@ node {
             stage('archive') {
                 archiveArtifacts 'releaseRecords.zip'
             }
+        end
         }
     } catch (e) {
         result = "FAIL" // make sure other exceptions are recorded as failure too
