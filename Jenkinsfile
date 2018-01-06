@@ -5,7 +5,7 @@ node {
           println it
             }
         withEnv(["PATH+NODE=${tool name: 'JenkinsNode'}/bin"]) {
-        if release == "deploy"
+        if (release == "deploy")
             stage('cleardown') {
                 deleteDir()
             }
