@@ -6,12 +6,8 @@ node {
             }
         withEnv(["PATH+NODE=${tool name: 'JenkinsNode'}/bin"]) {
             if (release == "deploy") {
-                stage('cleardown') {
-                    deleteDir()
-                }
-                stage('checkout') {
-                    checkout scm
-                }
+                checkout()
+
 
                 stage('npmInstall') {
                     sh 'node -v && npm -v && npm install'
@@ -54,6 +50,12 @@ node {
         }
     } catch (e) {
         result = "FAIL" // make sure other exceptions are recorded as failure too
+    }
+
+    def checkout () {
+       stage 'checkout'
+         deleteDir()
+         checkout scm
     }
 
 }
