@@ -11,6 +11,7 @@ node {
             }
             if (release == "deploy" || "test") {
                 tests()
+                reports()
             }
             if (release == "deploy") {
                 documentation()
@@ -41,6 +42,9 @@ def tests() {
         } catch (Exception err) {
             exit = 0
         }
+}
+
+def reports() {
     stage 'reports'
         sh 'npm run "e2e-report"'
         cucumber fileIncludePattern: 'cucumberReport/cucumber.json', sortingMethod: 'ALPHABETICAL'
