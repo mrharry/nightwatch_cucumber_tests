@@ -25,6 +25,10 @@ node {
                         exit = 0
                     }
                 }
+                stage('runReports') {
+                    sh 'npm run "e2e-report"'
+                    cucumber fileIncludePattern: 'cucumberReport/cucumber.json', sortingMethod: 'ALPHABETICAL'
+                }
             }
             if (release == "deploy") {
                 stage('runTraceability') {
@@ -33,10 +37,6 @@ node {
                        ruby getFeatureResults.rb
                        ruby getRedmineTickets.rb ${REDMINE} ${USER} ${PASSWORD} ${BUILD_ID}
                     """
-                }
-                stage('runReports') {
-                    sh 'npm run "e2e-report"'
-                    cucumber fileIncludePattern: 'cucumberReport/cucumber.json', sortingMethod: 'ALPHABETICAL'
                 }
                stage('release docs') {
                     sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}'
