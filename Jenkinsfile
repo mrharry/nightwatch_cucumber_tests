@@ -10,7 +10,7 @@ node {
                     deleteDir()
                 }
                 stage('checkout') {
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '933f-03c7e1f9d319', url: 'https://github.com/mrharry/nightwatch_cucumber_tests.git']]])
+                    checkout scm
                 }
 
                 stage('npmInstall') {
