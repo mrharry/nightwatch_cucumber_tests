@@ -1,9 +1,5 @@
 node {
     try {
-          sh 'env > env.txt'
-          readFile('env.txt').split("\r?\n").each {
-          println it
-            }
         withEnv(["PATH+NODE=${tool name: 'JenkinsNode'}/bin"]) {
             if (release == "deploy") {
                 checkout()
