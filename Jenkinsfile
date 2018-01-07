@@ -8,14 +8,14 @@ node {
             if (release == "deploy") {
                 checkout()
                 build()
-            }
-            if (release == "deploy" || "test") {
                 tests()
                 reports()
-            }
-            if (release == "deploy") {
                 documentation()
-
+            }
+            else // tests only
+             {
+                tests()
+                reports()
             }
         }
     } catch (e) {
