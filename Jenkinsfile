@@ -74,7 +74,6 @@ def sonar()
     }
   }
 
-
-end
+}
 
 
