@@ -65,4 +65,16 @@ def documentation() {
         archiveArtifacts 'releaseRecords.zip'
 }
 
+def sonar()
+  stage('SonarQube analysis') {
+    // requires SonarQube Scanner 6.7+
+    def scannerHome = tool 'SonarQube Scanner 6.7';
+    withSonarQubeEnv('My SonarQube Server') {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
+
+
+end
+
 
