@@ -52,7 +52,6 @@ def documentation() {
         sh """#!/bin/bash -l
            rvm use ruby-2.2.3
            ruby getFeatureResults.rb
-    //       ruby getRedmineTickets.rb ${REDMINE} ${USER} ${PASSWORD} ${BUILD_ID}
         """
    stage 'release docs'
         sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}'
