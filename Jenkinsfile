@@ -59,7 +59,6 @@ def documentation() {
         sh 'mkdir -p releaseRecords/build_number_${BUILD_ID}/traceability/'
         sh 'mv cucumberReport releaseRecords/build_number_${BUILD_ID}'
         sh 'mv manualTests releaseRecords/build_number_${BUILD_ID}'
-        sh 'mv traceability_build_$BUILD_ID*.csv releaseRecords/build_number_${BUILD_ID}/traceability'
         sh 'zip -r releaseRecords releaseRecords'
     stage 'archive'
         archiveArtifacts 'releaseRecords.zip'
