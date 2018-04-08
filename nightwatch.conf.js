@@ -2,14 +2,13 @@
 require('nightwatch-cucumber')({
     cucumberArgs: [
         '--require', 'features/step_definitions',
-        '--format', 'json:reports/cucumber.json',
+        '--format', 'json:cucumberReport/cucumber.json',
         'features'
     ]
 });
 
 module.exports = {
     custom_assertions_path: 'custom_asserts',
-    custom_commands_path: 'custom_commands',
     globals_path: 'globals.js',
     output_folder: 'reports',
     page_objects_path: 'pages',
@@ -31,6 +30,11 @@ module.exports = {
             launch_url: 'http://localhost:3000',
             selenium_port: 4444,
             selenium_host: 'localhost',
+            screenshots: {
+                enabled: false,
+                path: "test/screenshots/selenium",
+                on_failure: true,
+                on_error: true},
             desiredCapabilities: {
             }
         },

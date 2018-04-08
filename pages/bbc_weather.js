@@ -22,7 +22,7 @@ module.exports = {
 
     commands: [pageCommands],
 
-    url: 'http://www.bbc.co.uk/sport/',
+    url: 'http://www.bbc.co.uk/weather/',
 
     sections: {
         filter: {
@@ -38,6 +38,6 @@ module.exports = {
 
     elements: {
         body: 'body',
-        primary_nav: '[data-istats-container="primary-nav"]'
+        weather_forecast: '#forecast-carousel'
     }
 };
